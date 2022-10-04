@@ -6,9 +6,28 @@
 //
 
 #include <iostream>
+using namespace std;
+#include <sstream>
+#include <string>
+#include "btree.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main() {
+    string input;
+    getline(cin, input);
+    
+    int num;
+    stringstream ss(input);
+    
+    btree tree;
+    
+    while(ss>>num) {
+        tree.insert(num);
+    }
+ 
+
+    tree.print();
+
+    cout << endl;
+    
     return 0;
 }
