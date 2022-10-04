@@ -93,7 +93,47 @@ public:
         print(root);
     }
     
-
+    //check if node is a leaf
+    bool isLeaf(node* l) {
+        //if left and right node is empty, node is a leaf
+        if (l->left == nullptr && l->right == nullptr) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    void RtoL (node* r, int val, int &retVal) {
+        //BASE CASE -- if node is empty, do nothing
+        if (r == nullptr) {
+            return;
+        }
+        
+        //holds value of node to equal
+        int temp = val;
+        //subtracts node value from val to equal
+        temp = temp - r->data;
+        
+        //when temp is zero AND node is a leaf -- update ans;
+        if (isLeaf(r) && temp == 0) {
+            retVal = 1;
+        }
+        else {
+            retVal = 0;
+        }
+        
+        RtoL(r->left, val, retVal);
+        RtoL(r->right, val, retVal);
+    }
+    
+    int eval(int val) {
+        int returnValue = 0;
+        RtoL(root, val, returnValue);
+        return returnValue;
+    }
+    
+    
     
     
 };

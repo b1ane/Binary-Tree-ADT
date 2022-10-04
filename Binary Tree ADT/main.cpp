@@ -26,8 +26,10 @@ int main() {
  
 
     tree.print();
-
     cout << endl;
+    
+    
+    cout << tree.eval(3) << endl;
     
     return 0;
 }
